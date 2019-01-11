@@ -1,0 +1,58 @@
+//在ext创建一个名字为deps数组
+ext.deps = [:]
+
+//依赖版本号
+def versions = [:]
+versions.android_gradle_plugin = "3.1.2"
+versions.support = "28.0.0"
+versions.multidex = "1.0.2"
+versions.arouter_compiler = "1.2.1"
+versions.arouter_api = "1.4.0"
+versions.mvphabit = "1.0.1"
+versions.butterknife_compiler = "8.8.1"
+
+//在本地创建一个名字为deps数组
+def deps = [:]
+
+//在本地创建一个名字为support数组
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.v13 = "com.android.support:support-v13:$versions.support"
+support.percent = "com.android.support:percent:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.multidex = "com.android.support:multidex:$versions.multidex"
+deps.support = support
+
+//other
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+deps.MVPHabit = "com.github.zhanghacker:MVPHabit:$versions.mvphabit"
+deps.butterknife_compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife_compiler"
+deps.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
+deps.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+
+//把本地的deps赋值到ext.deps
+ext.deps = deps
+
+//在本地创建一个名字为build_versions数组
+def build_versions = [:]
+build_versions.min_sdk = 19
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.0"
+ext.build_versions = build_versions
+
+//声明仓库依赖方法
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    //Add the JitPack repository
+    handler.maven { url "https://jitpack.io" }
+    handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    handler.maven { url "https://maven.google.com" }
+}
+
+ext.addRepos = this.&addRepos

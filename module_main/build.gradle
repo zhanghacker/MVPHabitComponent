@@ -1,0 +1,18 @@
+apply from: "../module.gradle"
+android {
+    defaultConfig {
+        //如果是独立模块，则使用当前组件的包名
+        if (isDebugModule.toBoolean()) {
+            applicationId "com.itzxx.module.main"
+        }
+    }
+    //统一资源前缀，规范资源引用
+    resourcePrefix "main_"
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':lib_common')
+    annotationProcessor deps.arouter_compiler
+    annotationProcessor deps.butterknife_compiler
+}

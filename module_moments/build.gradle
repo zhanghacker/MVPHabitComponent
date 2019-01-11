@@ -1,0 +1,17 @@
+apply from: "../module.gradle"
+android {
+    defaultConfig {
+        //如果是独立模块，则使用当前组件的包名
+        if (isDebugModule.toBoolean()) {
+            applicationId "com.itzxx.module.moments"
+        }
+    }
+    //统一资源前缀，规范资源引用
+    resourcePrefix "moments_"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':lib_common')
+    annotationProcessor deps.arouter_compiler
+}

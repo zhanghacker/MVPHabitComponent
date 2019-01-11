@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+//加载本地文件->keystore.properties(本地文件名称)
+//def keystorePropertiesFile = rootProject.file("keystore.properties")
+//创建加载属性文件
+//def keystoreProperties = new Properties()
+// 加载本地文件
+//keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+static def buildTime() {
+    return new Date().format("yyyy-MM-dd")
+}
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    defaultConfig {
+        applicationId "com.itzxx.mvphabitcomponent"
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        //打包时间
+        resValue "string", "build_time", buildTime()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation project(':lib_common')
+    if (!isDebugModule.toBoolean()) {
+        implementation project(':module_main')
+        implementation project(':module_home')
+        implementation project(':module_moments')
+        implementation project(':module_user')
+    }
+}
