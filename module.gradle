@@ -4,7 +4,7 @@ if (isDebugModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-
+apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion build_versions.target_sdk
 

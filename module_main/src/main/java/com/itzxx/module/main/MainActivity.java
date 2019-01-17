@@ -17,12 +17,16 @@ import com.zhangxiaoxiao.helperlibrary.base.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 @Route(path = ARouterPath.Main.MAIN_MAIN_A)
 public class MainActivity extends BaseActivity {
 
 
-    private BottomNavigationView mNavbar;
-    private ViewPager mVpcontent;
+    @BindView(R2.id.vp_content)
+    ViewPager mVpcontent;
+    @BindView(R2.id.nav_bar)
+    BottomNavigationView mNavbar;
 
     @Override
     public int getContentLayout() {
@@ -31,8 +35,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void bindView(View view, Bundle savedInstanceState) {
-        mNavbar = (BottomNavigationView) findViewById(R.id.nav_bar);
-        mVpcontent = (ViewPager) findViewById(R.id.vp_content);
     }
 
     @Override
