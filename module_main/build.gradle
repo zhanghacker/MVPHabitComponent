@@ -13,6 +13,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lib_common')
-    annotationProcessor deps.arouter_compiler
     annotationProcessor deps.butterknife_compiler
+    annotationProcessor deps.arouter_compiler
 }

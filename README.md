@@ -4,14 +4,16 @@
 
 ## 组件化方案
 ![image](https://github.com/zhanghacker/MVPHabitComponent/blob/master/jpg/module_guide.png?raw=true)
+
 |名称|含义|
 |:------:|:-------|
-|集成模式|全部的业务都组件‘module_app’依赖成一个完整的项目|
+|集成模式|全部的业务都组件'module_app'依赖成一个完整的项目|
 |组件模式|开发的时候可以单独运行的一个业务app|
-|App壳工程|负责业务管理和打包apk，没有具体业务功能|
+|App壳工程|负责业务管理和打包apk,没有具体业务功能|
 |Main组件|负责启动页、主页面|
 |功能模块|各种工具依赖包|
-|LibCommon|为所有业务组件基础，例如一些资源或网络请求|
+|LibCommon|为所有业务组件基础,例如一些资源或网络请求|
+
 </br>
 
 ##  1. 组件化架构

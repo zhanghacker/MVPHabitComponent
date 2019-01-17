@@ -24,8 +24,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api deps.MVPHabit
     api deps.arouter_api
+    api deps.MVPHabit
     api deps.support.multidex
     api deps.support.design
     testImplementation 'junit:junit:4.12'
